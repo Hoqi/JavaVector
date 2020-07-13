@@ -28,15 +28,16 @@ class Vector <T> {
 
     @Override
     public String toString() {
-        String strResult = "";
+        StringBuilder strResult = new StringBuilder();
         for (int i = 0;i<this.vector.length;i++){
-            strResult += "[" + i + "]" + ": " + this.vector[i] + "\n";
+            strResult.append("[").append(i).append("]").append(": ").append(this.vector[i]).append("\n");
         }
-        return strResult;
+        return strResult.toString();
     }
 
     public Vector(T[] array){
-        this.vector = array;
+        this.vector =  (T[]) new Object[array.length];
+        System.arraycopy(array, 0, this.vector, 0,array.length);
     }
 
     public Vector(int capacity,T defalt){
@@ -73,6 +74,5 @@ class Vector <T> {
         this.vector = temp;
         return forReturn;
     }
-
 
 }
